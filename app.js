@@ -18,6 +18,8 @@ function paint(e) {
     if (painting) {
         e.target.style.backgroundColor = color 
     }
+
+    return false
 }
 
 function pickColor(e) {
