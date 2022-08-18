@@ -1,5 +1,7 @@
 let color = "hotpink"
 
+let painting = false 
+
 const colors = [
     "white",
     "blue",
@@ -13,11 +15,22 @@ const colors = [
 ]
 
 function paint(e) {
-    e.target.style.backgroundColor = color 
+    if (painting) {
+        e.target.style.backgroundColor = color 
+    }
 }
 
 function pickColor(e) {
     color = e.target.style.backgroundColor
+}
+
+function startPainting(e) {
+    painting = true 
+    paint(e)
+}
+
+function stopPainting() {
+    painting = false
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,9 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     container.style.width = containerSize + "px"
 
+    //drawing board
+
     for (let i = 0; i < size * size; i++) {
         const node = document.createElement("div")
-        node.addEventListener("pointerdown", paint)
+        node.addEventListener("pointerdown", startPainting)
+        node.addEventListener("pointerenter", paint)
+        node.addEventListener("pointerup", stopPainting)
         node.style.width = boxSize + "px"
         node.style.height = boxSize + "px"
         container.appendChild(node)
