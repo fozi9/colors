@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < size * size; i++) {
         const node = document.createElement("div")
-        node.addEventListener("click", paint)
+        node.addEventListener("pointerdown", paint)
         node.style.width = boxSize + "px"
         node.style.height = boxSize + "px"
         container.appendChild(node)
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < colors.length; i++) {
         const node = document.createElement("div")
-        node.addEventListener("click", pickColor)
+        node.addEventListener("pointerdown", pickColor)
         node.style.backgroundColor = colors[i]
         palette.appendChild(node)
 
